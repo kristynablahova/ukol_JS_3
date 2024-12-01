@@ -14,7 +14,7 @@ const numbers = [
 
   //Vypište do stránky pouze záporná čísla.
 
-  const negativeNumbers = numbers.map((item) => {
+  const negativeNumbers = numbers.filter((item) => {
     if (item < 0) {
       return item
     }
@@ -30,7 +30,7 @@ const numbers = [
 
   //Vypište do stránky pouze sudá čísla.
 
-  const evenNumbers = numbers.map(item => {
+  const evenNumbers = numbers.filter(item => {
     if (item % 2 === 0) {
       return item
     }
@@ -40,7 +40,7 @@ const numbers = [
 
   //Vypište do stránky pouze ta čísla, jejíchž absolutní hodnota je dělitelná třemi.
 
-  const absoluteNumberDiv3 = numbers.map(item => {
+  const absoluteNumberDiv3 = numbers.filter(item => {
     if (item % 3 === 0) {
       return Math.abs(item)
     }
@@ -50,7 +50,7 @@ const numbers = [
 
   //Vypište do stránky jak daleko je každé číslo v seznamu od čísla 5.
 
-  const numbersDistanceFrom5 = numbers.map(item => item - 5)
+  const numbersDistanceFrom5 = numbers.map(item => Math.abs(item - 5))
 
   console.log(`Vzdálenost čísel od 5: ${numbersDistanceFrom5}`)
 
@@ -74,10 +74,9 @@ const numbers = [
 
   //Spočítejte součet všech čísel v poli.
 
-  let sum = 0
-  numbers.forEach(item => {
-    sum += item
-    })
+  const initialValue = 0
+
+  const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue)
 
   console.log(`Součet všech čísel je: ${sum}`)
   
@@ -89,14 +88,14 @@ const numbers = [
 
   //Spočítejte součet všech kladných čísel v poli.
 
-  let sumPositive = 0
-
-  numbers.forEach(item => {
+  const positiveNumbers = numbers.filter((item) => {
     if (item > 0) {
-      sumPositive += item
+      return item
     }
   })
 
-  console.log(`Součet všech kladných čísel: ${sumPositive}`)
+  const sumPositive = positiveNumbers.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue)
+
+  console.log(`Součet všech kladných čísel je: ${sumPositive}`)
 
   
